@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validate() {
+            var username = document.myform.Fname.value;
+            var pass1 = document.myform.pass.value;
+            var pass2 = document.myform.repass.value;
+            var e = document.myform.email.value;
+            var p = document.myform.ph.value;
+            var ad = document.myform.Faddress.value;
+            var regex1 = /^[A-Z a-z]+$/;
+            var regex2 = /^[A-Z a-z 0-9 ]{8}$/;
+            var regex3 = /^[A-Z a-z 0-9 ]{8}$/;
+            var regex4 = /^[A-Z a-z 0-9][A-Z a-z 0-9 . _]*@[A-Z a-z 0-9]+([.][A-Z a-z]+)+$/;
+            var regex5 = /^[7-9][0-9]{9}$/;
+            var regex6 = /^[A-Z a-z 0-9]+$/;
+            if (!(username.match(regex1))) {
+                alert("In Valid UserName");
+                return false;
+            }
+            else if (!(pass1.match(regex2))) {
+                alert("InValid Password");
+                return false;
+            }
+            else if (!(pass2.match(regex3) && pass1 == pass2)) {
+                alert("Password And repassword must be same");
+                return false;
+            }
+            else if (!(e.match(regex4))) {
+                alert("InValid Email Id");
+                return false;
+            }
+            else if (!(p.match(regex5))) {
+                alert("InValid Phone Number");
+                return false;
+            }
+            else if (!ad.match(regex6)) {
+                alert("Wrong Adresss!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+</head>
+<Title> Registration Form </Title>
+
+<body>
+    <main id="mainholder">
+        <h1 id="login header">STUDENT REGISTRATION
+            FORM</h1>
+        <div id="login-error-msg-holder">
+            <!-- <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or
+password</span></p> -->
+        </div>
+        <form name="myform" action="B.html" onsubmit="return validate()" id="login-form">
+            Student Name :<br><input type="text" name="Fname" placeholder="Enter User name"><br></p>
+            <p>Student Address :<br><input type="text" name="Faddress" placeholder="Enter User
+Address"><br></p>
+            <p>Password :<br> <input type="password" name="pass" placeholder="Enter your
+Password"><br></p>
+            <p>Re-enter Password:<br><input type="password" name="repass" placeholder="Re-enter Password"><br></p>
+            <p>Student Email :<br><input type="text" name="email" value="" placeholder="Enter your Email
+Id"></p>
+            <p>Phone Number :<br><input type="number" name="ph" placeholder="Enter Your Phone
+Number"></p>
+            Select Your Course:
+            <br><select>
+                <option>B.tech</option>
+                <option>BCA</option>
+                <option>MBA</option>
+                <option>M.Tech</option>
+            </select><br><br>
+            Any Comments:&nbsp;&nbsp;&nbsp;<textarea rows="5" ,cols="10" placeholder="Add Comments"></textarea>
+            <p><input type="Submit" value="Login" id="Login-form-Submit"></p>
+            <p> <input type="reset" value="Reset" id="Login-form-reser"></p>
+        </form>
+</body>
+
+</html>
